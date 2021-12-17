@@ -7,6 +7,7 @@
 
 %%
 "+" { return ADD; }
+"-" { return SUB; }
 "=" { return '='; }
 "=>" { return ARROW;}
 "*" { return MUL; }

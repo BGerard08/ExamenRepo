@@ -20,7 +20,7 @@
 }
 
 %token EOL
-%token ADD SUB MUL DIV FOR RANGE LET PRINT ARROW FUNC NUM ID
+%token ADD SUB MUL FOR RANGE LET PRINT ARROW FUNC NUM ID
 
 %%
 start: input/*{
@@ -41,12 +41,11 @@ func_list: func_list spaces func
         | func 
         ;
 
-func: FUNC func_arg_id '(' args ')' ARROW  block;
+func: FUNC ID '(' args ')' ARROW  block;
 
-func_arg_id: ID;
 
-args: args ',' func_arg_id 
-    | func_arg_id
+args: args ',' ID
+    | ID
     | {/**/}
     ;
     
@@ -84,8 +83,8 @@ let_decl: LET ID '=' assig_list ;
 
 assign_stmt: ID '=' expr ';' ;
 
-expr: expr '+' factor 
- | expr '-' factor 
+expr: expr ADD factor 
+ | expr SUB factor 
  | factor 
  ;
 
