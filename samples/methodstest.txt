@@ -1,0 +1,12 @@
+func factorial(num) =>{
+    let i = 1;
+    let result = 1;
+    for(1..num){
+        result= result * i;
+        i = i + 1;
+    } 
+}
+
+func main() =>{
+    print(factorial(7));
+}
