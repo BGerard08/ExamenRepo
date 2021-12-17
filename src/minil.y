@@ -59,7 +59,7 @@ statements: statements statement spaces
 statement:  decl
         |   for_stmt
         |   assign_stmt
-        |   print_stmt 
+        |   print_stmt /* {$$ = new PrintStatement($2, yylineno);} */
         ;
 
 for_stmt: FOR '(' term RANGE term ')' forpart block  ;

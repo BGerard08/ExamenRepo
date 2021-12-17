@@ -217,3 +217,16 @@ string intArithmetic(Code &leftCode, Code &rightCode, Code &code, char op){
     return ss.str();
 }
 
+string PrintStatement::genCode(){
+    Code exprCode;
+    this->expr->genCode(exprCode);
+    releaseRegister(exprCode.place);
+    stringstream code;
+    code<< exprCode.code<<endl;
+        code <<"move $a0, "<< exprCode.place<<endl
+        << "li $v0, 1"<<endl
+        << "syscall"<<endl;
+    }
+    return code.str();
+}
+
